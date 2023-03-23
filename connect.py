@@ -3,6 +3,7 @@ import os
 import json
 import signal
 import subprocess
+import tempfile
 PATH = ""
 
 
@@ -21,8 +22,6 @@ def connect():
     for connection in connections:
         try:
             connection = connection.strip()
-            import subprocess
-            import tempfile
             with tempfile.TemporaryFile() as tempf:
                 proc = subprocess.Popen(['python3', 'vmess2json.py', connections[0]], stdout=tempf)
                 proc.wait()
